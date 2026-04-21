@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 import ProductCard, { type ProductData } from "../ui/ProductCard";
@@ -58,7 +58,7 @@ const PRODUCTS: ProductData[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1,
@@ -66,7 +66,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.07,
       duration: 0.75,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   }),
 };

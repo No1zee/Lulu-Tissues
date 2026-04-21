@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { CheckCircle2, ShieldCheck, Zap, ArrowDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,7 +54,7 @@ const PRODUCTS: ProductData[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -62,7 +62,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.1,
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   }),
 };
