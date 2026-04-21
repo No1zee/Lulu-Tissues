@@ -64,7 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} ${playfair.variable} ${greatVibes.variable} ${montserrat.variable}`} suppressHydrationWarning>
-      <body className="antialiased relative">
+      <body className="antialiased relative" suppressHydrationWarning>
         <CustomCursor />
         <SmoothScrollProvider>
           {children}

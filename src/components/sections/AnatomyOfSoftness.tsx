@@ -1,13 +1,14 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const SCIENCE_ITEMS = [
   {
@@ -37,177 +38,156 @@ const SCIENCE_ITEMS = [
 ];
 
 export const AnatomyOfSoftness = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const blocks = gsap.utils.toArray<HTMLElement>(".science-block");
-    
-    // Master Timeline for choreographed reveal
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
         end: `+=${SCIENCE_ITEMS.length * 150}%`,
         pin: true,
-        scrub: 0.5, // Slightly snappier scrub
+        pinSpacing: true,
+        scrub: 1,
         invalidateOnRefresh: true,
-        fastScrollEnd: true,
-      }
+      },
     });
 
-    // Initial state: ensure all blocks are hidden except maybe the first frame
-    gsap.set(blocks, { autoAlpha: 0, y: 30 });
+    // Animate Header Reveal
+    tl.fromTo(
+      ".science-header",
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 1 },
+      0
+    );
 
-    // Sequence each block
-    blocks.forEach((block, i) => {
-      const isLast = i === blocks.length - 1;
+    // Animate the sequence of science blocks
+    SCIENCE_ITEMS.forEach((_, i) => {
+      const block = `.science-block-${i}`;
       
-      // 1. Entrance 
-      if (i === 0) {
-        tl.to(block, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, 0);
-      } else {
-        tl.to(block, 
-          { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }
-        );
-      }
+      // Entrance
+      tl.to(block, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+      });
 
-      // 2. The "Active" state duration (User scrolls through the details)
-      tl.to({}, { duration: 2.5 }); // Extended read time
-
-      // 3. Exit (except for last one)
-      if (!isLast) {
+      // Exit (if not the last item)
+      if (i < SCIENCE_ITEMS.length - 1) {
         tl.to(block, {
-          autoAlpha: 0,
-          y: -30,
-          duration: 1,
-          ease: "power2.in",
+          opacity: 0,
+          scale: 0.95,
+          y: -50,
+          duration: 1.5,
+          ease: "power2.inOut",
         });
       }
     });
+
+    // Floating text background animation
+    tl.to(".floating-bg-text", {
+      xPercent: -20,
+      duration: 10,
+      ease: "none",
+    }, 0);
+
   }, { scope: triggerRef });
 
   return (
-    <div ref={triggerRef} className="relative bg-dark-base text-cream overflow-hidden">
-      {/* Background texture */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.04] z-0"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        }}
-      />
+    <section
+      ref={triggerRef}
+      className="relative bg-dark-base text-cream overflow-hidden min-h-screen flex items-center"
+    >
+      {/* Decorative backdrop text */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-[0.03] pointer-events-none whitespace-nowrap z-0">
+        <span className="floating-bg-text text-[30vw] font-black uppercase leading-none select-none inline-block">
+          Technical Excellence Softness Purity Technical Excellence
+        </span>
+      </div>
 
-      <div className="container-site relative z-10">
-        {/* Header - Stays at top or scrolls normally */}
-        <div className="min-h-[60vh] flex flex-col justify-end pb-20">
-          <motion.span
-            className="block text-[10px] font-bold tracking-[0.3em] uppercase mb-6"
-            style={{ color: "var(--color-sage-light)" }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Product Science
-          </motion.span>
-
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <motion.h2
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-section-title text-cream max-w-[520px]"
-            >
-              The Anatomy{" "}
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontStyle: "italic",
-                  fontWeight: 500,
-                  color: "var(--color-sage-light)",
-                }}
-              >
-                of Softness.
-              </span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="max-w-[320px] text-sm leading-relaxed"
-              style={{ color: "var(--color-ink-light)" }}
-            >
-              Strip away the marketing. This is the engineering behind every sheet —
-              the science that makes Lulu the most trusted tissue in Zimbabwe.
-            </motion.p>
+      <div className="container-site relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          
+          {/* Static Sidebar Content (Hidden on mobile scrolling stage if needed, but here we keep it) */}
+          <div className="science-header lg:col-span-4 xl:col-span-5">
+            <div className="space-y-6">
+              <span className="text-label-sage block">Lulu Labs</span>
+              <h2 className="text-section-title text-cream">
+                The Anatomy <br />
+                <span
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontStyle: "italic",
+                    fontWeight: 400,
+                  }}
+                  className="text-sage"
+                >
+                  of Softness.
+                </span>
+              </h2>
+              <div className="h-px w-24 bg-sage/30" />
+              <p className="text-warm-gray text-base md:text-lg leading-relaxed max-w-sm">
+                Engineering comfort at a microscopic level. Our three-layer system 
+                redefines the relationship between strength and softness.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Pinning Stage */}
-        <div className="relative h-[80vh] md:h-[90vh] mb-20">
-          {SCIENCE_ITEMS.map((item, i) => (
-            <div 
-              key={item.number} 
-              className="science-block absolute inset-0 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center invisible opacity-0"
-            >
-              {/* Text content */}
-              <div className="lg:col-start-1 lg:col-span-12 xl:col-span-5 science-content order-2 lg:order-1">
-                <div className="flex items-baseline gap-5 mb-6">
-                  <span className="font-heading font-black text-6xl md:text-7xl leading-none tracking-tighter text-dark-border opacity-50">
-                    {item.number}
-                  </span>
-                  <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-sage-light">
-                    {item.category}
-                  </span>
-                </div>
-                <h3 className="font-heading font-black text-cream tracking-tighter text-4xl md:text-5xl lg:text-6xl mb-6 whitespace-pre-line leading-[0.9]">
-                  {item.title}
-                </h3>
-                <p className="text-base md:text-lg leading-relaxed text-ink-light max-w-[480px] mb-8">
-                  {item.body}
-                </p>
-                <div className="inline-flex items-center gap-3">
-                  <span className="w-8 h-px block bg-sage" />
-                  <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-sage-light">
-                    {item.detail}
-                  </span>
-                </div>
-              </div>
-
-              {/* Image visual */}
-              <div 
-                className="lg:col-start-1 lg:col-span-12 xl:col-start-7 xl:col-span-6 science-image order-1 lg:order-2"
-                data-cursor="inspect"
-                style={{ contain: "paint" }}
+          {/* Animating Cards Stage */}
+          <div className="lg:col-span-8 xl:col-span-7 relative h-[60vh] md:h-[70vh] flex items-center">
+            {SCIENCE_ITEMS.map((item, i) => (
+              <div
+                key={item.number}
+                className={`science-block-${i} absolute inset-0 flex items-center justify-center opacity-0 scale-105 translate-y-20`}
+                style={{ pointerEvents: i === 0 ? "auto" : "none" }}
               >
-                <div className="relative aspect-video lg:aspect-square rounded-[2rem] overflow-hidden bg-dark-surface border border-dark-border shadow-2xl group cursor-none">
-                  <Image
-                    src={item.image}
-                    alt={item.title.replace("\n", " ")}
-                    fill
-                    className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-[opacity,transform,filter] duration-[1.5s] ease-out"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority={i <= 1} 
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-sage/5 group-hover:opacity-0 transition-opacity duration-1000" />
-                  
-                  {/* S-Tier Tech Badge */}
-                  <div className="absolute top-6 right-6 md:top-8 md:right-8 z-10">
-                    <div className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-ivory/10 backdrop-blur-xl bg-ivory/5 text-[8px] md:text-[9px] font-black uppercase tracking-widest text-ivory/40">
-                      Analytical View
+                <div className="relative w-full bg-espresso/40 backdrop-blur-2xl rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl flex flex-col md:flex-row group">
+                  {/* Left Side: Image */}
+                  <div className="md:w-1/2 relative aspect-square md:aspect-auto overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-base/60 to-transparent md:hidden" />
+                  </div>
+
+                  {/* Right Side: Copy */}
+                  <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-4xl md:text-5xl font-display text-sage opacity-40">
+                        {item.number}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-sage">
+                        {item.category}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-2xl md:text-3xl font-heading font-black text-ivory mb-6 tracking-tight whitespace-pre-line">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-cream/60 leading-relaxed text-sm md:text-base mb-8">
+                      {item.body}
+                    </p>
+
+                    <div className="flex items-center gap-3">
+                      <div className="h-px w-8 bg-sage/40" />
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-warm-gray">
+                        {item.detail}
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
