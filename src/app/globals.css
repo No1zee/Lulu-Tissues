@@ -36,6 +36,7 @@
   --color-dark-base:    hsl(26, 20%, 8%);    /* #150F0B — near-black warm */
   --color-dark-surface: hsl(26, 15%, 13%);   /* #231C17 — card on dark */
   --color-dark-border:  hsl(26, 10%, 20%);   /* #352C26 — borders on dark */
+  --color-forest:       hsl(147, 40%, 12%);  /* Deep cinematic green for footers */
 
   /* Legacy compat (kept for mascot / wipe component) */
   --color-lulu-white:   hsl(0, 0%, 98%);
@@ -522,6 +523,7 @@ body::before {
   border: 1px solid rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @utility magnetic {
@@ -532,3 +534,15 @@ body::before {
 @utility soft-card-glow {
   box-shadow: 0 20px 80px -20px hsla(147, 28%, 38%, 0.15);
 }
+
+@layer utilities {
+  .counter-fluid {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1;
+  }
+}
+
+  .logo-white {
+    filter: brightness(0) invert(1);
+  }
+

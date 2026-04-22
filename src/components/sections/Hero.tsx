@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, Variants } from "framer-motion";
@@ -98,20 +98,14 @@ const Hero = () => {
     >
       {/* ── Background texture ───────────────────────────────── */}
       <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.035] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A1512' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[url('data:image/svg+xml,%3Csvg_width=\'60\'_height=\'60\'_viewBox=\'0_0_60_60\'_xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg_fill=\'none\'_fill-rule=\'evenodd\'%3E%3Cg_fill=\'%231A1512\'_fill-opacity=\'1\'%3E%3Cpath_d=\'M36_34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6_34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6_4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"
       />
 
       {/* ── Subtle warm gradient overlay ─────────────────────── */}
       <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,162,85,0.04) 0%, transparent 70%)",
-        }}
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_70%_50%,rgba(201,162,85,0.04)_0%,transparent_70%)]"
       />
 
       {/* ── Main grid ────────────────────────────────────────── */}
@@ -145,13 +139,7 @@ const Hero = () => {
                     className="inline-block"
                   >
                     <span
-                      className="italic"
-                      style={{ 
-                        fontFamily: "var(--font-display)", 
-                        fontWeight: 300,
-                        textTransform: "lowercase",
-                        letterSpacing: "-0.01em"
-                      }}
+                      className="italic font-display font-light lowercase tracking-[-0.01em]"
                     >
                       is a
                     </span>
@@ -194,7 +182,7 @@ const Hero = () => {
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
-              <Link href="#partner" className="btn-outline group">
+              <Link href="/business#partner" className="btn-outline group">
                 For Business
                 <ArrowUpRight
                   size={13}
@@ -242,11 +230,10 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.95, x: 40 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-[420px] xl:w-[480px] aspect-[3/4] rounded-[32px] bg-cream border border-mist shadow-[var(--shadow-product)] cursor-none group"
+              className="relative w-[420px] xl:w-[480px] aspect-3/4 rounded-4xl bg-cream border border-mist shadow-(--shadow-product) cursor-none group"
             >
               <div 
-                className="absolute inset-0 rounded-[32px] overflow-hidden"
-                style={{ transform: "translateZ(50px)" }}
+                className="absolute inset-0 rounded-4xl overflow-hidden transform-[translateZ(50px)]"
               >
                 <Image
                   src="/images/hero-product.png"
@@ -257,15 +244,12 @@ const Hero = () => {
                   priority
                 />
                 {/* Overlay gradient for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-cream/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-cream/30 via-transparent to-transparent" />
               </div>
 
               {/* Internal shadow simulation */}
               <div 
-                className="absolute inset-0 pointer-events-none rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: "radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15) 0%, transparent 60%)"
-                }}
+                className="absolute inset-0 pointer-events-none rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(255,255,255,0.15)_0%,transparent_60%)]"
               />
             </motion.div>
 
@@ -274,7 +258,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute -bottom-6 -left-12 glass-card rounded-2xl p-5 max-w-[200px] shadow-[var(--shadow-card)]"
+              className="absolute -bottom-6 -left-12 glass-card rounded-2xl p-5 max-w-[200px] shadow-(--shadow-card)"
             >
               <p className="text-label text-sage mb-1">Hero Product</p>
               <p className="text-espresso font-heading font-bold text-sm leading-snug">
@@ -288,7 +272,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.3, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-              className="absolute -top-4 -right-8 w-[88px] h-[88px] rounded-full bg-sage flex flex-col items-center justify-center text-white shadow-[var(--shadow-sage)]"
+              className="absolute -top-4 -right-8 w-[88px] h-[88px] rounded-full bg-sage flex flex-col items-center justify-center text-white shadow-(--shadow-sage)"
             >
               <span className="text-[11px] font-black uppercase tracking-wider text-center leading-tight">
                 #1 in<br />Zimbabwe

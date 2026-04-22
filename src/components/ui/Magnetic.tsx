@@ -3,7 +3,7 @@
 import { useRef, useState, ReactNode } from "react";
 import { motion } from "framer-motion";
 
-export default function Magnetic({ children, pulse }: { children: ReactNode, pulse?: boolean }) {
+export default function Magnetic({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 

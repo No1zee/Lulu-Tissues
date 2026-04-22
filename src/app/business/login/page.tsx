@@ -13,7 +13,7 @@ export default function PartnerLogin() {
       <Navbar />
       
       <div className="flex-1 flex items-center justify-center p-6 pt-32">
-        <div className="w-full max-w-md bg-white rounded-[2rem] p-10 shadow-2xl border border-mist relative overflow-hidden">
+        <div className="w-full max-w-md bg-white rounded-4xl p-10 shadow-2xl border border-mist relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
             <Landmark size={120} />
           </div>
@@ -31,17 +31,20 @@ export default function PartnerLogin() {
 
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-warm-gray">Partner ID</label>
+                <label htmlFor="partner-id" className="text-[10px] font-black uppercase tracking-widest text-warm-gray">Partner ID</label>
                 <input 
+                  id="partner-id"
                   type="text" 
                   placeholder="ZW-0000-00"
                   className="w-full px-6 py-4 rounded-xl border border-mist focus:border-sage focus:ring-1 focus:ring-sage/20 outline-none transition-all font-mono text-sm"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-warm-gray">Secure Key</label>
+                <label htmlFor="secure-key" className="text-[10px] font-black uppercase tracking-widest text-warm-gray">Secure Key</label>
                 <input 
+                  id="secure-key"
                   type="password" 
+                  placeholder="••••••••"
                   className="w-full px-6 py-4 rounded-xl border border-mist focus:border-sage focus:ring-1 focus:ring-sage/20 outline-none transition-all"
                 />
               </div>

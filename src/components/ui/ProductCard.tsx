@@ -36,11 +36,14 @@ const ProductCard = ({ product, tall = false, priority = false }: ProductCardPro
       {product.badge && (
         <div className="absolute top-5 left-5 z-10">
           <span
-            className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
-            style={{
-              background: product.accent,
-              color: product.id === "premium" ? "#1A1512" : "white",
-            }}
+            className={`text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full ${
+              product.id === "aloe" ? "bg-sage border-sage" : 
+              product.id === "premium" ? "bg-gold border-gold" :
+              product.id === "value" ? "bg-stone border-stone" :
+              "bg-espresso border-espresso"
+            } ${
+              product.id === "premium" ? "text-espresso" : "text-white"
+            }`}
           >
             {product.badge}
           </span>
@@ -54,7 +57,7 @@ const ProductCard = ({ product, tall = false, priority = false }: ProductCardPro
           alt={product.name.replace("\n", " ")}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-contain object-center transition-transform duration-[1.2s] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12] p-6"
+          className="object-contain object-center transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12] p-6"
           priority={priority}
         />
       </div>
@@ -64,8 +67,7 @@ const ProductCard = ({ product, tall = false, priority = false }: ProductCardPro
         <div>
           <p className="text-label text-ink-light mb-2">{product.label}</p>
           <h3
-            className="font-heading font-black text-espresso text-2xl leading-tight tracking-tight"
-            style={{ whiteSpace: "pre-line" }}
+            className="font-heading font-black text-espresso text-2xl leading-tight tracking-tight whitespace-pre-line"
           >
             {product.name}
           </h3>
@@ -87,8 +89,12 @@ const ProductCard = ({ product, tall = false, priority = false }: ProductCardPro
 
       {/* Hover border highlight */}
       <div
-        className="absolute inset-0 rounded-2xl border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        style={{ borderColor: product.accent }}
+        className={`absolute inset-0 rounded-2xl border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${
+          product.id === "aloe" ? "border-sage" : 
+          product.id === "premium" ? "border-gold" :
+          product.id === "value" ? "border-stone" :
+          "border-espresso"
+        }`}
       />
     </Link>
   );

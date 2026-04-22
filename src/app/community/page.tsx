@@ -31,7 +31,7 @@ export default function CommunityPage() {
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none">
           <div className="relative w-full h-full">
-             <Image src="/images/products/macro-aloe.png" alt="Overlay" fill className="object-cover" />
+             <Image src="/images/products/macro-aloe.png" alt="Overlay" fill sizes="33vw" className="object-cover" aria-hidden="true" />
           </div>
         </div>
       </section>
@@ -44,7 +44,13 @@ export default function CommunityPage() {
         <div className="container-site">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl border border-mist">
-              <Image src="/images/community-impact.png" alt="Community Support" fill className="object-cover" />
+              <Image 
+                src="/images/community-impact.png" 
+                alt="Community Support" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover" 
+              />
             </div>
             <div className="space-y-8">
               <div>

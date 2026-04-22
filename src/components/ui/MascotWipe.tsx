@@ -112,12 +112,11 @@ const MascotWipe = ({ targetRef }: MascotWipeProps) => {
   }, { scope: containerRef, dependencies: [targetRef] });
 
   return (
-    <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+    <div ref={containerRef} className="fixed inset-0 pointer-events-none z-100 overflow-hidden">
       {/* The Cinematic Wipe Overlay */}
       <div 
         ref={wipeRef}
-        className="absolute inset-0 w-[150vw] h-[150vh] -top-[25vh] bg-linear-to-r from-aloe-green/40 via-white/30 to-transparent backdrop-blur-[2px] shadow-[inset_-60px_0_120px_rgba(255,255,255,0.8),-100px_0_200px_rgba(46,175,110,0.2)]"
-        style={{ transformOrigin: "center left" }}
+        className="absolute inset-0 w-[150vw] h-[150vh] -top-[25vh] bg-linear-to-r from-aloe-green/40 via-white/30 to-transparent backdrop-blur-[2px] shadow-[inset_-60px_0_120px_rgba(255,255,255,0.8),-100px_0_200px_rgba(46,175,110,0.2)] origin-left"
       />
 
       {/* Particle Trail Container */}
@@ -125,12 +124,7 @@ const MascotWipe = ({ targetRef }: MascotWipeProps) => {
         {[...Array(6)].map((_, i) => (
           <div 
             key={i} 
-            className="sparkle-particle absolute w-8 h-8 text-aloe-green opacity-0 scale-0"
-            style={{ 
-              top: `${40 + (i * 5)}vh`, 
-              left: "-10vw",
-              filter: "drop-shadow(0 0 10px rgba(46,175,110,0.5))"
-            }}
+            className="sparkle-particle absolute w-8 h-8 text-aloe-green opacity-0 scale-0 -left-[10vw] drop-shadow-[0_0_10px_rgba(46,175,110,0.5)]"
           >
             <Sparkles size={32} fill="currentColor" />
           </div>
@@ -138,12 +132,13 @@ const MascotWipe = ({ targetRef }: MascotWipeProps) => {
       </div>
 
       {/* The Mascot */}
-      <div ref={mascotRef} className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] -ml-[200px] select-none opacity-0" style={{ opacity: 1 }}>
+      <div ref={mascotRef} className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] -ml-[200px] select-none opacity-0">
         <div className="relative w-full h-full"> 
           <Image 
             src="/images/lulu-universe/lulu-wipe.png" 
             alt="Lulu Wipe" 
             fill
+            sizes="(max-width: 768px) 100vw, 600px"
             className="object-contain"
             unoptimized
             priority
@@ -159,7 +154,7 @@ const MascotWipe = ({ targetRef }: MascotWipeProps) => {
             *SQUEAKY CLEAN*
           </span>
           {/* Bubble tail */}
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[15px] border-t-trust-navy" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-15 border-l-transparent border-r-15 border-r-transparent border-t-15 border-t-trust-navy" />
         </div>
       </div>
     </div>

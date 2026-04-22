@@ -44,7 +44,6 @@ export const Counter = ({ value, className, style }: CounterProps) => {
     <span 
       ref={ref} 
       className={className}
-      style={style}
     >
       0{suffix}
     </span>

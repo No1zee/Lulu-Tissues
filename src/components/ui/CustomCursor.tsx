@@ -57,7 +57,7 @@ export const CustomCursor = () => {
   return (
     <motion.div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999] mix-blend-difference bg-white flex items-center justify-center overflow-hidden"
+      className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-9999 mix-blend-difference bg-white flex items-center justify-center overflow-hidden"
       style={{
         x: springX,
         y: springY,

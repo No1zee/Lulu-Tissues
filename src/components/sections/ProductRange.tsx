@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -37,7 +37,7 @@ const PRODUCTS: ProductData[] = [
     label: "The Essential",
     name: "Everyday\nValue",
     description:
-      "Family strength, household reliability. Because every roll counts when you're looking after yours.",
+      "Family strength, household reliability. Because every roll counts when you&apos;re looking after yours.",
     image: "/images/products/aloe-2-pack.png",
     href: "/products/value",
     accent: "var(--color-stone)",
@@ -49,7 +49,7 @@ const PRODUCTS: ProductData[] = [
     label: "The Institutional",
     name: "Bulk\nSupply",
     description:
-      "Built for hospitals, hotels, schools, and offices that can't afford a shortfall. 500+ active partners nationwide.",
+      "Built for hospitals, hotels, schools, and offices that can&apos;t afford a shortfall. 500+ active partners nationwide.",
     image: "/images/products/macro-wipe.png",
     href: "#partner",
     accent: "var(--color-espresso)",
@@ -73,7 +73,7 @@ const fadeUp: Variants = {
 
 export const ProductRange = () => {
   return (
-    <section id="range" className="section-padding bg-ivory">
+    <section id="range" className="relative section-padding bg-ivory">
       <div className="container-site">
 
         {/* Section header */}
@@ -83,8 +83,7 @@ export const ProductRange = () => {
             <h2 className="text-section-title text-espresso max-w-[480px]">
               Crafted for<br />
               <span
-                style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontWeight: 600 }}
-                className="text-sage"
+                className="text-sage font-display italic font-semibold"
               >
                 Every Moment.
               </span>

@@ -19,9 +19,11 @@ export default function StoryPage() {
             src="/images/story-heritage.png" 
             alt="Heritage" 
             fill 
+            sizes="100vw"
             className="object-cover opacity-20 grayscale brightness-75"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-parchment via-transparent to-parchment" />
+          <div className="absolute inset-0 bg-linear-to-b from-parchment via-transparent to-parchment" />
         </div>
 
         <div className="container-site relative z-10 text-center">
@@ -59,11 +61,12 @@ export default function StoryPage() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="relative aspect-[4/5] md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
+              <div className="relative aspect-4/5 md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
                 <Image 
                   src="/images/story-production.png" 
                   alt="Production Excellence" 
                   fill 
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover"
                 />
               </div>
@@ -89,11 +92,11 @@ export default function StoryPage() {
       {/* Values */}
       <section className="py-24 md:py-40 bg-white">
         <div className="container-site text-center">
-          <h2 className="text-section-title text-espresso mb-20 animate-fade-in">Our Purity Standard</h2>
+          <h2 className="text-section-title text-espresso mb-20">Our Purity Standard</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             <div>
               <h3 className="text-xl font-heading font-black text-espresso mb-4 uppercase">Integrity</h3>
-              <p className="text-warm-gray leading-relaxed text-sm">No kwal qualitative shortcuts. Every roll meets the Lulu benchmark for strength and ply-integrity.</p>
+              <p className="text-warm-gray leading-relaxed text-sm">No quality shortcuts. Every roll meets the Lulu benchmark for strength and ply-integrity.</p>
             </div>
             <div>
               <h3 className="text-xl font-heading font-black text-espresso mb-4 uppercase">Softness</h3>

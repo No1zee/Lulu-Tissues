@@ -56,7 +56,7 @@ export const CommunityHub = () => {
   return (
     <section
       id="community"
-      className="section-padding bg-ivory overflow-hidden"
+      className="relative section-padding bg-ivory overflow-hidden"
     >
       <div className="container-site">
 
@@ -172,8 +172,7 @@ export const CommunityHub = () => {
               >
                 <Counter
                   value={stat.value}
-                  className="font-heading font-black tracking-tighter text-espresso"
-                  style={{ fontSize: "clamp(32px, 4.5vw, 52px)", lineHeight: 1 }}
+                  className="font-heading font-black tracking-tighter text-espresso counter-fluid"
                 />
                 <span className="text-label text-ink-light">{stat.label}</span>
               </motion.div>

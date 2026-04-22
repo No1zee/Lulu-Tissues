@@ -12,9 +12,8 @@ const Logo: React.FC<LogoProps> = ({ className = "w-[52px] h-[38px]", variant = 
     <div className={`relative ${className} flex items-center justify-center`}>
       <svg
         viewBox="0 0 800 600"
-        className="w-full h-full"
+        className={`w-full h-full ${variant === 'white' ? 'logo-white' : ''}`}
         xmlns="http://www.w3.org/2000/svg"
-        style={{ filter: variant === 'white' ? 'brightness(0) invert(1)' : 'none' }}
       >
         <defs>
           <style>

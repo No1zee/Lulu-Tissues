@@ -40,7 +40,7 @@ export const LifestyleProof = () => {
   return (
     <section
       id="lifestyle"
-      className="section-padding bg-parchment overflow-hidden"
+      className="section-padding bg-parchment overflow-hidden relative"
     >
       <div className="container-site">
 
@@ -64,12 +64,7 @@ export const LifestyleProof = () => {
             >
               Softness,{" "}
               <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontStyle: "italic",
-                  fontWeight: 500,
-                }}
-                className="text-warm-gray"
+                className="text-warm-gray font-display italic font-medium"
               >
                 everywhere.
               </span>
@@ -110,7 +105,7 @@ export const LifestyleProof = () => {
               </div>
 
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1512]/90 via-[#1A1512]/20 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#1A1512]/90 via-[#1A1512]/20 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
@@ -121,8 +116,7 @@ export const LifestyleProof = () => {
                 >
                   <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-cream/60 mb-2">{moment.label}</p>
                   <p
-                    className="text-ivory font-heading font-black text-2xl leading-[1.1] tracking-tight"
-                    style={{ whiteSpace: "pre-line" }}
+                    className="text-ivory font-heading font-black text-2xl leading-[1.1] tracking-tight whitespace-pre-line"
                   >
                     {moment.quote}
                   </p>

@@ -117,12 +117,7 @@ export const AnatomyOfSoftness = () => {
               <h2 className="text-section-title text-cream">
                 The Anatomy <br />
                 <span
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontStyle: "italic",
-                    fontWeight: 400,
-                  }}
-                  className="text-sage"
+                  className="text-sage font-display italic font-normal"
                 >
                   of Softness.
                 </span>
@@ -140,8 +135,7 @@ export const AnatomyOfSoftness = () => {
             {SCIENCE_ITEMS.map((item, i) => (
               <div
                 key={item.number}
-                className={`science-block-${i} absolute inset-0 flex items-center justify-center opacity-0 scale-105 translate-y-20`}
-                style={{ pointerEvents: i === 0 ? "auto" : "none" }}
+                className={`science-block-${i} absolute inset-0 flex items-center justify-center opacity-0 scale-105 translate-y-20 ${i === 0 ? "pointer-events-auto" : "pointer-events-none"}`}
               >
                 <div className="relative w-full bg-espresso/40 backdrop-blur-2xl rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl flex flex-col md:flex-row group">
                   {/* Left Side: Image */}
@@ -150,9 +144,10 @@ export const AnatomyOfSoftness = () => {
                       src={item.image}
                       alt={item.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                       className="object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-base/60 to-transparent md:hidden" />
+                    <div className="absolute inset-0 bg-linear-to-t from-dark-base/60 to-transparent md:hidden" />
                   </div>
 
                   {/* Right Side: Copy */}

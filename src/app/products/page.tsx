@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { CheckCircle2, ShieldCheck, Zap, ArrowDown } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
@@ -47,7 +47,7 @@ const PRODUCTS: ProductData[] = [
     name: "Bulk\nSupply",
     description: "Built for hospitals, hotels, schools, and offices that can't afford a shortfall.",
     image: "/images/products/macro-wipe.png",
-    href: "#partner",
+    href: "/products/institutional",
     accent: "var(--color-espresso)",
     badge: "B2B",
     bg: "bg-cream",
@@ -107,7 +107,7 @@ export default function ProductsPage() {
 
         {/* Floating background graphic */}
         <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-[40%] aspect-square hidden lg:block opacity-[0.03] pointer-events-none">
-           <Image src="/lulu-logo-hd.svg" alt="" fill className="object-contain grayscale invert" />
+           <Image src="/lulu-logo-hd.svg" alt="" fill sizes="(max-width: 1024px) 1vw, 40vw" className="object-contain grayscale invert" />
         </div>
       </section>
 
@@ -184,7 +184,7 @@ export default function ProductsPage() {
                   },
                   {
                     icon: <Zap className="w-8 h-8 text-mint-light" />,
-                    title: "Zimbabwe's Pride",
+                    title: "Zimbabwe&apos;s Pride",
                     desc: "Wholly Zimbabwe owned and operated. Every roll contributes to local community development."
                   }
                 ].map((spec, i) => (
@@ -217,7 +217,7 @@ export default function ProductsPage() {
                 Quality you can feel.
              </h2>
              <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                <Link href="#contact" className="btn-primary bg-white text-espresso px-12 py-5 rounded-full hover:bg-ivory transition-all shadow-2xl">
+                <Link href="/business#partner" className="btn-primary bg-white text-espresso px-12 py-5 rounded-full hover:bg-ivory transition-all shadow-2xl">
                     Wholesale Inquiry
                 </Link>
                 <Link href="/" className="btn-outline border-white/20 text-white px-12 py-5 rounded-full hover:bg-white/5 transition-all">

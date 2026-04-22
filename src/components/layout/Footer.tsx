@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone, ArrowUpRight } from "lucide-react";
 import Logo from "../ui/Logo";
 
 const RANGE_LINKS = [
@@ -30,7 +30,10 @@ const Footer = () => {
       className="relative overflow-hidden bg-forest text-cream pt-24"
     >
       {/* Cinematic Branding Watermark */}
-      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.03] whitespace-nowrap">
+      <div 
+        aria-hidden="true" 
+        className="absolute -bottom-20 left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.03] whitespace-nowrap"
+      >
         <h2 className="text-[35vw] font-black font-heading leading-none tracking-tighter">
           LULU
         </h2>
@@ -149,6 +152,7 @@ const Footer = () => {
             <button 
               onClick={scrollToTop}
               className="p-6 rounded-full border border-ivory/10 hover:border-sage hover:bg-sage/10 transition-all group"
+              aria-label="Back to top"
             >
               <ArrowUpRight size={24} className="transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
             </button>

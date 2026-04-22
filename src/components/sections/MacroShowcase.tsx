@@ -53,7 +53,14 @@ export const MacroShowcase = () => {
   );
 };
 
-const MacroBlock = ({ feature, reverse, index }: { feature: any, reverse: boolean, index: number }) => {
+interface Feature {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const MacroBlock = ({ feature, reverse, index }: { feature: Feature, reverse: boolean, index: number }) => {
   const isDark = index === 1; // Middle one gets dark treatment
 
   return (
@@ -74,11 +81,12 @@ const MacroBlock = ({ feature, reverse, index }: { feature: any, reverse: boolea
             src={feature.image}
             alt={feature.title}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className={`object-cover bg-mist/20 ${isDark ? 'opacity-80 mix-blend-screen scale-110' : 'mix-blend-multiply opacity-90'} group-hover:scale-[1.08] transition-transform duration-[3s] ease-out`}
           />
         </motion.div>
         
-        <div className={`absolute inset-0 z-10 ${isDark ? 'bg-gradient-to-t from-espresso/80 to-transparent' : 'bg-gradient-to-t from-black/20 to-transparent'}`} />
+        <div className={`absolute inset-0 z-10 ${isDark ? 'bg-linear-to-t from-espresso/80 to-transparent' : 'bg-linear-to-t from-black/20 to-transparent'}`} />
         
         {/* S-Tier Detail: Microscopic Badge */}
         <div className="absolute bottom-8 left-8 z-20 flex items-center gap-3">
@@ -111,8 +119,8 @@ const MacroBlock = ({ feature, reverse, index }: { feature: any, reverse: boolea
         </motion.div>
 
         {/* Decorative S-Tier Elements */}
-        <div className={`absolute top-12 right-12 w-12 h-[1px] ${isDark ? 'bg-ivory/10' : 'bg-espresso/10'}`} />
-        <div className={`absolute top-12 right-12 h-12 w-[1px] ${isDark ? 'bg-ivory/10' : 'bg-espresso/10'}`} />
+        <div className={`absolute top-12 right-12 w-12 h-px ${isDark ? 'bg-ivory/10' : 'bg-espresso/10'}`} />
+        <div className={`absolute top-12 right-12 h-12 w-px ${isDark ? 'bg-ivory/10' : 'bg-espresso/10'}`} />
       </div>
     </div>
   );

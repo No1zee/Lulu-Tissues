@@ -48,20 +48,12 @@ const PartnershipHub = () => {
   return (
     <section
       id="partner"
-      className="relative overflow-hidden"
-      style={{
-        background: "var(--color-dark-base)",
-        paddingTop: "clamp(80px,10vw,160px)",
-        paddingBottom: "clamp(80px,10vw,160px)",
-      }}
+      className="relative overflow-hidden bg-dark-base py-20 md:py-32 lg:py-40"
     >
       {/* Subtle diagonal texture */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FAF9F6' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
-        }}
+        className="absolute inset-0 pointer-events-none opacity-[0.035] bg-[url('data:image/svg+xml,%3Csvg_width=\'40\'_height=\'40\'_viewBox=\'0_0_40_40\'_xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg_fill=\'%23FAF9F6\'_fill-opacity=\'1\'_fill-rule=\'evenodd\'%3E%3Cpath_d=\'M0_40L40_0H20L0_20M40_40V20L20_40\'/%3E%3C/g%3E%3C/svg%3E')]"
       />
 
       <div className="container-site relative z-10">
@@ -71,28 +63,19 @@ const PartnershipHub = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-0 mb-20 md:mb-28 border"
-          style={{ borderColor: "var(--color-dark-border)" }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-0 mb-20 md:mb-28 border border-dark-border"
         >
           {METRICS.map((m, i) => (
             <div
               key={m.label}
-              className="flex flex-col gap-1 p-6 md:p-8"
-              style={{
-                borderRight: i < 3 ? "1px solid var(--color-dark-border)" : undefined,
-              }}
+              className={`flex flex-col gap-1 p-6 md:p-8 ${i < 3 ? "border-r border-dark-border" : ""}`}
             >
               <Counter
                 value={m.value}
-                className="font-heading font-black tracking-tighter"
-                style={{
-                  fontSize: "clamp(28px, 4vw, 48px)",
-                  color: "var(--color-cream)",
-                }}
+                className="font-heading font-black tracking-tighter text-cream text-3xl md:text-5xl"
               />
               <span
-                className="text-[10px] font-bold tracking-[0.22em] uppercase"
-                style={{ color: "var(--color-ink-light)" }}
+                className="text-[10px] font-bold tracking-[0.22em] uppercase text-ink-light"
               >
                 {m.label}
               </span>
@@ -106,8 +89,7 @@ const PartnershipHub = () => {
           {/* LEFT — Copy */}
           <div>
             <motion.span
-              className="block text-[10px] font-bold tracking-[0.3em] uppercase mb-6"
-              style={{ color: "var(--color-sage-light)" }}
+              className="block text-[10px] font-bold tracking-[0.3em] uppercase mb-6 text-sage-light"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -120,16 +102,10 @@ const PartnershipHub = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-heading font-black tracking-tighter mb-8"
-              style={{
-                fontSize: "clamp(40px, 6vw, 72px)",
-                lineHeight: 0.95,
-                color: "var(--color-cream)",
-                textTransform: "uppercase",
-              }}
+              className="font-heading font-black tracking-tighter mb-8 text-cream uppercase text-4xl md:text-6xl lg:text-7xl leading-[0.95]"
             >
               Scale With<br />
-              <span style={{ color: "var(--color-sage-light)" }}>The Leader.</span>
+              <span className="text-sage-light">The Leader.</span>
             </motion.h2>
 
             <motion.p
@@ -137,12 +113,11 @@ const PartnershipHub = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="text-base leading-relaxed mb-14 max-w-[440px]"
-              style={{ color: "var(--color-ink-light)" }}
+              className="text-base leading-relaxed mb-14 max-w-[440px] text-ink-light"
             >
-              We don't just provide tissues. We provide the infrastructure for hygiene
+              We don&apos;t just provide tissues. We provide the infrastructure for hygiene
               at scale — bespoke contracts, national logistics, and the support of
-              Zimbabwe's most recognised household brand behind you.
+              Zimbabwe&apos;s most recognised household brand behind you.
             </motion.p>
 
             {/* Pillars */}
@@ -157,21 +132,18 @@ const PartnershipHub = () => {
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.65 }}
                 >
                   <div
-                    className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border transition-colors duration-300 group-hover:border-sage"
-                    style={{ borderColor: "var(--color-dark-border)", background: "var(--color-dark-surface)" }}
+                    className="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border border-dark-border bg-dark-surface transition-colors duration-300 group-hover:border-sage text-sage-light"
                   >
-                    <pillar.icon size={18} style={{ color: "var(--color-sage-light)" }} />
+                    <pillar.icon size={18} />
                   </div>
                   <div>
                     <h4
-                      className="font-bold text-base mb-1"
-                      style={{ color: "var(--color-cream)" }}
+                      className="font-bold text-base mb-1 text-cream"
                     >
                       {pillar.title}
                     </h4>
                     <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--color-ink-light)" }}
+                      className="text-sm leading-relaxed text-ink-light"
                     >
                       {pillar.desc}
                     </p>
@@ -189,11 +161,7 @@ const PartnershipHub = () => {
             transition={{ delay: 0.2, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
             <div
-              className="relative rounded-2xl overflow-hidden p-8 md:p-10"
-              style={{
-                background: "var(--color-dark-surface)",
-                border: "1px solid var(--color-dark-border)",
-              }}
+              className="relative rounded-2xl overflow-hidden p-8 md:p-10 bg-dark-surface border border-dark-border"
             >
               {/* Success state */}
               <AnimatePresence mode="wait">
@@ -207,19 +175,17 @@ const PartnershipHub = () => {
                     className="flex flex-col items-center justify-center text-center py-16 gap-5"
                   >
                     <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center"
-                      style={{ background: "rgba(67,125,88,0.15)" }}
+                      className="w-16 h-16 rounded-full flex items-center justify-center bg-sage/15 text-sage-light"
                     >
-                      <CheckCircle2 size={32} style={{ color: "var(--color-sage-light)" }} />
+                      <CheckCircle2 size={32} />
                     </div>
                     <div>
                       <h3
-                        className="font-heading font-black text-2xl mb-2"
-                        style={{ color: "var(--color-cream)" }}
+                        className="font-heading font-black text-2xl mb-2 text-cream"
                       >
                         Application Received.
                       </h3>
-                      <p className="text-sm" style={{ color: "var(--color-ink-light)" }}>
+                      <p className="text-sm text-ink-light">
                         Our B2B team will be in touch within 24 hours to discuss
                         bulk pricing and logistics.
                       </p>
@@ -233,22 +199,19 @@ const PartnershipHub = () => {
                     exit={{ opacity: 0 }}
                   >
                     {/* Form header */}
-                    <div className="mb-8 pb-8" style={{ borderBottom: "1px solid var(--color-dark-border)" }}>
+                    <div className="mb-8 pb-8 border-b border-dark-border">
                       <p
-                        className="text-[10px] font-bold tracking-[0.25em] uppercase mb-2"
-                        style={{ color: "var(--color-sage-light)" }}
+                        className="text-[10px] font-bold tracking-[0.25em] uppercase mb-2 text-sage-light"
                       >
                         Partner Application
                       </p>
                       <h3
-                        className="font-heading font-black text-xl tracking-tight"
-                        style={{ color: "var(--color-cream)" }}
+                        className="font-heading font-black text-xl tracking-tight text-cream"
                       >
                         Become a Partner
                       </h3>
                       <p
-                        className="text-sm mt-2"
-                        style={{ color: "var(--color-ink-light)" }}
+                        className="text-sm mt-2 text-ink-light"
                       >
                         Ready to supply your region? Let&apos;s talk business.
                       </p>
@@ -257,17 +220,20 @@ const PartnershipHub = () => {
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <FormField
+                          id="partner-name"
                           label="Full Name"
                           placeholder="Jane Chigumba"
                           disabled={status === "submitting"}
                         />
                         <FormField
+                          id="business-name"
                           label="Business Name"
                           placeholder="ABC Wholesale"
                           disabled={status === "submitting"}
                         />
                       </div>
                       <FormField
+                        id="partner-email"
                         label="Email Address"
                         placeholder="jane@business.co.zw"
                         type="email"
@@ -277,8 +243,7 @@ const PartnershipHub = () => {
                       {/* Partner type selector */}
                       <div>
                         <label
-                          className="block text-[10px] font-bold tracking-[0.22em] uppercase mb-3"
-                          style={{ color: "var(--color-ink-light)" }}
+                          className="block text-[10px] font-bold tracking-[0.22em] uppercase mb-3 text-ink-light"
                         >
                           Partner Type
                         </label>
@@ -289,21 +254,11 @@ const PartnershipHub = () => {
                               type="button"
                               onClick={() => setPartnerType(type)}
                               disabled={status === "submitting"}
-                              className="px-4 py-2.5 rounded-lg text-[10px] font-bold tracking-[0.18em] uppercase transition-all duration-300"
-                              style={{
-                                background:
-                                  partnerType === type
-                                    ? "var(--color-sage)"
-                                    : "var(--color-dark-base)",
-                                color:
-                                  partnerType === type
-                                    ? "white"
-                                    : "var(--color-ink-light)",
-                                border:
-                                  partnerType === type
-                                    ? "1px solid var(--color-sage)"
-                                    : "1px solid var(--color-dark-border)",
-                              }}
+                              className={`px-4 py-2.5 rounded-lg text-[10px] font-bold tracking-[0.18em] uppercase transition-all duration-300 border ${
+                                partnerType === type
+                                  ? "bg-sage text-white border-sage"
+                                  : "bg-dark-base text-ink-light border-dark-border"
+                              }`}
                             >
                               {type}
                             </button>
@@ -314,21 +269,7 @@ const PartnershipHub = () => {
                       <button
                         type="submit"
                         disabled={status === "submitting"}
-                        className="mt-4 w-full py-4 rounded-xl font-bold text-[11px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-350 disabled:opacity-60"
-                        style={{
-                          background: "var(--color-sage)",
-                          color: "white",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.target as HTMLButtonElement).style.background =
-                            "var(--color-sage-deep)";
-                        }}
-                        onMouseLeave={(e) => {
-                          if (status !== "submitting") {
-                            (e.target as HTMLButtonElement).style.background =
-                              "var(--color-sage)";
-                          }
-                        }}
+                        className="mt-4 w-full py-4 rounded-xl font-bold text-[11px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-350 disabled:opacity-60 bg-sage hover:bg-sage-deep text-white"
                       >
                         {status === "submitting" ? (
                           <>
@@ -344,8 +285,7 @@ const PartnershipHub = () => {
                       </button>
 
                       <p
-                        className="text-center text-[9px] font-bold tracking-widest uppercase mt-1"
-                        style={{ color: "var(--color-dark-border)" }}
+                        className="text-center text-[9px] font-bold tracking-widest uppercase mt-1 text-dark-border"
                       >
                         SSL Encrypted · Confidential
                       </p>
@@ -364,15 +304,13 @@ const PartnershipHub = () => {
               className="mt-5 flex items-center gap-3 px-2"
             >
               <span
-                className="text-[10px] font-bold tracking-[0.2em] uppercase"
-                style={{ color: "var(--color-ink-light)" }}
+                className="text-[10px] font-bold tracking-[0.2em] uppercase text-ink-light"
               >
                 Already a partner?
               </span>
               <a
                 href="/business/login"
-                className="text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1 transition-colors duration-300"
-                style={{ color: "var(--color-sage-light)" }}
+                className="text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1 transition-colors duration-300 text-sage-light hover:text-sage"
               >
                 Partner portal <ArrowUpRight size={11} />
               </a>
@@ -385,11 +323,13 @@ const PartnershipHub = () => {
 };
 
 const FormField = ({
+  id,
   label,
   placeholder,
   type = "text",
   disabled = false,
 }: {
+  id: string;
   label: string;
   placeholder: string;
   type?: string;
@@ -397,30 +337,18 @@ const FormField = ({
 }) => (
   <div>
     <label
-      className="block text-[10px] font-bold tracking-[0.22em] uppercase mb-2"
-      style={{ color: "var(--color-ink-light)" }}
+      htmlFor={id}
+      className="block text-[10px] font-bold tracking-[0.22em] uppercase mb-2 text-ink-light"
     >
       {label}
     </label>
     <input
+      id={id}
       type={type}
       placeholder={placeholder}
       disabled={disabled}
       required
-      className="w-full px-4 py-3.5 rounded-xl text-sm font-medium focus:outline-none transition-all duration-300 disabled:opacity-50"
-      style={{
-        background: "var(--color-dark-base)",
-        border: "1.5px solid var(--color-dark-border)",
-        color: "var(--color-cream)",
-      }}
-      onFocus={(e) => {
-        e.target.style.borderColor = "var(--color-sage)";
-        e.target.style.boxShadow = "0 0 0 3px rgba(67,125,88,0.12)";
-      }}
-      onBlur={(e) => {
-        e.target.style.borderColor = "var(--color-dark-border)";
-        e.target.style.boxShadow = "none";
-      }}
+      className="w-full px-4 py-3.5 rounded-xl text-sm font-medium focus:outline-none transition-all duration-300 disabled:opacity-50 bg-dark-base border-[1.5px] border-dark-border text-cream focus:border-sage focus:ring-3 focus:ring-sage/12"
     />
   </div>
 );

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Logo from "../ui/Logo";
 
 const NAV_LINKS = [
@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[0.8s] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
             ? "glass-nav py-3 mx-auto mt-4 w-[95%] rounded-full shadow-[0_8px_32px_rgba(26,21,18,0.08)] border border-white/20"
             : "bg-transparent py-6 w-full"
@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="container-site flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex-shrink-0 group">
+          <Link href="/" className="relative z-10 shrink-0 group">
             <Logo className="w-[52px] h-[38px] transition-opacity duration-300 group-hover:opacity-80" />
           </Link>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
               For Business
             </Link>
             <Link
-              href="#partner"
+              href="/business#partner"
               className="btn-sage text-[10px] py-3 px-6 flex items-center gap-2"
             >
               Become a Reseller
@@ -78,7 +78,7 @@ const Navbar = () => {
             className="lg:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-[5px] group"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
+            aria-expanded={isOpen ? "true" : "false"}
           >
             <span
               className={`block h-[1.5px] bg-espresso transition-all duration-300 ${
@@ -136,7 +136,7 @@ const Navbar = () => {
                 className="mt-10 flex flex-col gap-4"
               >
                 <Link
-                  href="#partner"
+                  href="/business#partner"
                   onClick={() => setIsOpen(false)}
                   className="btn-sage w-full text-sm py-4 justify-center"
                 >
