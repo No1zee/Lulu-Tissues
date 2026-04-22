@@ -78,7 +78,7 @@ const Navbar = () => {
             className="lg:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-[5px] group"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen ? "true" : "false"}
+            aria-expanded={isOpen}
           >
             <span
               className={`block h-[1.5px] bg-espresso transition-all duration-300 ${
