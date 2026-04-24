@@ -16,11 +16,11 @@
   --color-mist:         hsl(36, 15%, 82%);   /* #D7D0C5 — borders, dividers */
   --color-stone:        hsl(35, 12%, 70%);   /* #BDB4A7 — placeholder / muted */
 
-  /* Text — Espresso Scale (Now with subtle green tint) */
-  --color-espresso:     hsl(147, 12%, 10%);   /* Deep cinematic green-black */
-  --color-charcoal:     hsl(147, 10%, 20%);   /* Dark green-gray */
-  --color-warm-gray:    hsl(147, 8%, 45%);    /* Muted sage-gray */
-  --color-ink-light:    hsl(147, 6%, 60%);    /* Soft sage-tinted labels */
+  /* Text — Espresso Scale (Now with subtle green tint) — Lightened slightly */
+  --color-espresso:     hsl(147, 12%, 14%);   /* Deep cinematic green-black */
+  --color-charcoal:     hsl(147, 10%, 24%);   /* Dark green-gray */
+  --color-warm-gray:    hsl(147, 8%, 48%);    /* Muted sage-gray */
+  --color-ink-light:    hsl(147, 6%, 63%);    /* Soft sage-tinted labels */
 
   /* Accent — Sage / Eucalyptus (restrained) */
   --color-sage:         hsl(147, 28%, 38%);  /* #437D58 — primary accent */
@@ -32,11 +32,11 @@
   --color-gold:         hsl(38, 52%, 59%);   /* #C9A255 — used only for emphasis */
   --color-gold-light:   hsl(40, 60%, 82%);   /* #E8D5A8 — faint gold tint */
 
-  /* Dark surfaces (Now deep cinematic greens) */
-  --color-dark-base:    hsl(147, 35%, 7%);    /* Deepest forest green */
-  --color-dark-surface: hsl(147, 30%, 12%);   /* Card on deep green */
-  --color-dark-border:  hsl(147, 20%, 20%);   /* Borders on green */
-  --color-forest:       hsl(147, 40%, 10%);  /* Cinematic green for footers */
+  /* Dark surfaces (Now deep cinematic greens) — Lightened slightly per request */
+  --color-dark-base:    hsl(147, 25%, 11%);    /* Deep forest green */
+  --color-dark-surface: hsl(147, 20%, 15%);   /* Card on deep green */
+  --color-dark-border:  hsl(147, 15%, 22%);   /* Borders on green */
+  --color-forest:       hsl(147, 30%, 13%);  /* Cinematic green for footers */
 
   /* Legacy compat (kept for mascot / wipe component) */
   --color-lulu-white:   hsl(0, 0%, 98%);
